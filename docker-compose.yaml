@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:latest
+    hostname: mongo
+    networks: 
+      - NET1
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - VOL1:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+  VOL1:
+
+networks:
+  NET1:
